@@ -1,17 +1,17 @@
 // Pull in required dependencies
-var path = require('path');
+let path = require('path');
 
 // Export HTML routes
-module.exports = function(app) {
+module.exports = (app) => {
 	// console.log('___ENTER htmlRoutes.js___');
 
 	// Home page
-	app.get('/', function(req, res) {
+	app.get('/', (req, res) => {
 		res.sendFile(path.join(__dirname, '../public/home.html'));
 	});
 
 	// Survey page
-	app.get('/survey', function(req, res) {
+	app.get('/survey', (req, res) => {
 		res.sendFile(path.join(__dirname, '../public/survey.html'));
 	});
 };

@@ -1,10 +1,10 @@
 // Pull in required dependencies
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
+let express = require('express');
+let bodyParser = require('body-parser');
+let path = require('path');
 // Configure the Express application
-var app = express();
-var PORT = process.env.PORT || 3000;
+let app = express();
+let PORT = process.env.PORT || 3000;
 
 // Expose the public directory to access CSS files
 app.use(express.static(path.join(__dirname, './app/public')));
