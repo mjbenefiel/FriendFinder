@@ -51,7 +51,7 @@
                             <i class="material-icons">account_circle</i> 
                             <h6 class ="surveySays">Name (Required)</h6>
                             
-                            <input type="text" class="validate" placeholder="Your Name Here" id="userName">
+                            <input type="text" class="validate" placeholder="Your Name Here" id="userName" data-error="Please enter your name" required="required" aria-required="true"> 
                             
                         </div>
 
@@ -236,6 +236,8 @@
 
     <script type="text/javascript">
 
+  // Or with jQuery
+    
     // Or with jQuery
 
   $(document).ready(function(){
@@ -243,7 +245,7 @@
   });
         
         $(document).ready(function () {
-            $('select').material_select();
+            $('select').formSelect();
             $('.modal').modal({
                 dismissible: false, // Modal can be dismissed by clicking outside of the modal
                 opacity: .5, // Opacity of modal background
