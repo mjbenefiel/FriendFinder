@@ -58,7 +58,7 @@
                         <div class="input-field col s10">
                             <i class="material-icons">picture_in_picture</i>
                             <h6 class="surveySays">Link to Photo Image (Required)</h6>
-                            <input type="text" class="validate" placeholder="Photo Link Here" id="userPhoto" data-error="Please insert photo link" required="required" aria-required="true">
+                            <input type="text" class="validate" placeholder="Photo Link Here" id="userPhoto" data-error="Please enter image link" required="required" aria-required="true">
                         </div>
                         <!-- Survey Questions -->
                         <div class="input-field col s10">
@@ -258,7 +258,15 @@
         // Activate submit button
         $('#submitButton').on('click', function (event) {
             event.preventDefault();
-            // Gather user inputs
+
+
+var valid = true;
+		if($("#userName").val() === "" || $("#userPhoto").val() === "") {
+			valid = false;
+		} else if($("#question1").val() === "empty" || $("#question2").val() === "empty" || $("#question3").val() === "empty" || $("#question4").val() === "empty" || $("#question5").val() === "empty" || $("#question6").val() === "empty" || $("#question7").val() === "empty" || $("#question8").val() === "empty" || $("#question9").val() === "empty" || $("#question10").val() === "empty") {
+			valid = false;
+		}
+        if(valid === true)  {                     // Gather user inputs
             var userInput = {
                 name: $('#userName').val().trim(),
                 photo: $('#userPhoto').val().trim(),
@@ -275,10 +283,11 @@
                     $('#question10').val().trim()
                 ]
             };
-            // console.log('userInput = ' + JSON.stringify(userInput));
+
+           var currentURL = window.location.origin;
+                  // console.log('userInput = ' + JSON.stringify(userInput));
             // Add user inputs to friends list
-            $.post('/api/friends', userInput)
-                .done(function (data) {
+            $.post(currentURL + '/api/friends', userInput, function(data) {
                     // console.log('response = ' + JSON.stringify(data));
                     // Set the name and image values of friend match
                     $('#userMatch').html(data.matchName);
@@ -286,6 +295,11 @@
                     // Pop open the modal dialog
                     $('#modal1').modal('open');
                 });
+            } else {
+                M.toast({html: 'I am a toast!', classes: 'toasted'})
+        
+		}
+          
         });
     </script>
 </body>
