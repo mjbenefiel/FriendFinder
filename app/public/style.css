@@ -63,3 +63,15 @@ main h1 {
 #repo-link:hover {
     text-decoration: underline;
 }
+
+.material-icons {
+    display: inline;
+    margin-left: 0px;
+    
+}
+
+.surveySays {
+    display: inline;
+    margin-left: 0px;
+    
+}

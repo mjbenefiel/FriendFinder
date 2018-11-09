@@ -27,23 +27,15 @@ module.exports = (app) => {
 		let matchImage = '';
 		let difference = 10000; // Make the initial value big for comparison
 
-		// Examine all existing friends in the list
-		for (let i = 0; i < friends.length; i++) {
-			// console.log('friend = ' + JSON.stringify(friends[i]));
-
-			// Compute differenes for each question
+		for (var i in friends) {
+	
 			let diff = 0;
-			for (let j = 0; j < responses.length; j++) {
+			for (var j in responses) {
 				diff += Math.abs(friends[i].scores[j] - responses[j]);
 			}
-			// console.log('diff = ' + diff);
-
-			// If lowest difference, record the friend match
+					// If lowest difference, record the friend match
 			if (diff < difference) {
-				// console.log('Closest match found = ' + diff);
-				// console.log('Friend name = ' + friends[i].name);
-				// console.log('Friend image = ' + friends[i].photo);
-
+		
 				difference = diff;
 				matchName = friends[i].name;
 				matchImage = friends[i].photo;
