@@ -1,31 +1,24 @@
-// Pull in required dependencies
 let path = require('path');
 
-// Import the list of friend entries
 let friends = require('../data/friends.js');
 
 // Export API routes
 module.exports = (app) => {
-	// console.log('___ENTER apiRoutes.js___');
-
-	// Total list of friend entries
+	
 	app.get('/api/friends', (req, res) => {
 		res.json(friends);
 	});
 
 	// Add new friend entry
 	app.post('/api/friends', (req, res) => {
-		// Capture the user input object
 		let input = req.body;
-		// console.log('input = ' + JSON.stringify(input));
-
+	
 		let responses = input.scores;
-		// console.log('responses = ' + responses);
-
-		// Compute best friend match
+	
+		// Compute bff match
 		let matchName = '';
 		let matchImage = '';
-		let difference = 10000; // Make the initial value big for comparison
+		let difference = 10000; // Make the initial value large for comparison
 
 		for (var i in friends) {
 	
@@ -33,7 +26,7 @@ module.exports = (app) => {
 			for (var j in responses) {
 				diff += Math.abs(friends[i].scores[j] - responses[j]);
 			}
-					// If lowest difference, record the friend match
+					// If lowest difference, record friend match
 			if (diff < difference) {
 		
 				difference = diff;
@@ -42,7 +35,6 @@ module.exports = (app) => {
 			}
 		}
 
-		// Add new user
 		friends.push(input);
 
 		// Send appropriate response
